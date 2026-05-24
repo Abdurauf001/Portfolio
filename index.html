@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 
 <head>
     <meta charset="UTF-8">
@@ -12,130 +12,182 @@
 
     <header>
         <div class="logo">
-            <h2>Developer Abdurauf</h2>
+            <div class="img2">
+                <img src="./assets/image copy 5.png" alt="">
+            </div>
         </div>
         <nav>
-            <a href="#bosh-sahifa">Men haqimda</a>
-            <a href="#konikmalar">Ko'nikmalar</a>
-            <a href="#loyihalar">Loyihalar</a>
-            <a href="#sertifikatlar">Sertifikatlar</a>
-            <a href="#boglanish">Bog'lanish</a>
+            <a href="#bosh-sahifa" data-i18n="navAbout">Men haqimda</a>
+            <a href="#konikmalar" data-i18n="navSkills">Ko'nikmalar</a>
+            <a href="#loyihalar" data-i18n="navProjects">Loyihalar</a>
+            <a href="#sertifikatlar" data-i18n="navCertificates">Sertifikatlar</a>
+            <a href="#boglanish" data-i18n="navContact">Bog'lanish</a>
+            <select name="language" id="languageSelect">
+                <option value="en">English</option>
+                <option value="uz">O'zbekcha</option>
+                <option value="ru">Русский</option>
+            </select>
         </nav>
     </header>
 
     <main>
         <div class="men-haqimda" id="bosh-sahifa">
             <div class="text">
-                <h1>Men Kutpiddinov Abdurauf <br> Full-Stack Developer</h1>
-                <p>Men Full Stack Developer sifatida zamonaviy web saytlar yarataman. Frontend va Backend
-                    texnologiyalarida
-                    ishlayman.</p>
-                <button class="active"
+                <h1 data-i18n="heroTitle">Men <span>Kutpiddinov Abdurauf</span> <br> <span
+                        class="highlight">Full-Stack</span> Dasturchi</h1>
+                <p data-i18n="heroText">Men Full Stack Dasturchi sifatida zamonaviy web saytlar yarataman. Frontend va
+                    Backend texnologiyalarida ishlayman.</p>
+                <button class="active" data-i18n="heroButton"
                     onclick="document.getElementById('boglanish').scrollIntoView({behavior: 'smooth'})">
                     Menga yozing
                 </button>
             </div>
             <div class="img">
-                <img src="./assets/Screenshot_2.png" alt="rasm">
+                <img src="https://jessup.edu/wp-content/uploads/2023/12/How-to-Become-a-Web-Developer.jpg" alt="rasm">
             </div>
         </div>
 
         <div class="konikmalar" id="konikmalar">
-            <h2>Ko'nikmalarim</h2>
+            <h2 data-i18n="skillsTitle">Ko'nikmalarim</h2>
             <div class="skill-buttons">
-                <button class="skill-btn" onclick="showSkill('html')">HTML</button>
-                <button class="skill-btn" onclick="showSkill('css')">CSS</button>
-                <button class="skill-btn" onclick="showSkill('js')">JavaScript</button>
-                <button class="skill-btn" onclick="showSkill('react')">React</button>
-                <button class="skill-btn" onclick="showSkill('node')">Node.js</button>
+                <div class="box">
+                    <div class="img2">
+                        <img src="./assets/image copy 4.png" alt="">
+                    </div>
+                    <button class="skill-btn" onclick="showSkill('html', this)">HTML</button>
+                </div>
+                <div class="box">
+                    <div class="img3">
+                        <img src="https://1000logos.net/wp-content/uploads/2020/09/CSS-Logo-2011.png" alt="">
+                    </div>
+                    <button class="skill-btn" onclick="showSkill('css', this)">CSS</button>
+                </div>
+                <div class="box">
+                    <div class="img3">
+                        <img src="https://logos-world.net/wp-content/uploads/2023/02/JavaScript-Symbol.png" alt="">
+                    </div>
+                    <button class="skill-btn" onclick="showSkill('js', this)">JavaScript</button>
+                </div>
+                <div class="box">
+                    <div class="img2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/3840px-React-icon.svg.png"
+                            alt="">
+                    </div>
+                    <button class="skill-btn" onclick="showSkill('react', this)">React</button>
+                </div>
+                <div class="box">
+                    <div class="img2">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz4ujyaPndpNXMuLkeVrh5eTULE9tyoATxKg&s"
+                            alt="">
+                    </div>
+                    <button class="skill-btn" onclick="showSkill('node', this)">Node.js</button>
+                </div>
             </div>
             <div class="progress-area" id="progress-area"></div>
         </div>
 
         <div class="loyihalar" id="loyihalar">
-            <h2>Loyihalarim</h2>
+            <h2 data-i18n="projectsTitle">Loyihalarim</h2>
             <div class="card">
                 <div class="box1">
-                    <a href="https://exclusive-lzd2.vercel.app" target="_blank">&rarr; Exclusive &larr;</a>
-                    <p>Exclusive - bu onlayn do'kon bo'lib, unda turli xil <br> mahsulotlarni sotib olish va saralash
-                        imkoniyati mavjud.</p>
+                    <div class="img4">
+                        <img src="./assets/image copy 7.png" alt="">
+                    </div>
+                    <h3>Exclusive</h3>
+                    <p data-i18n="projectExclusiveText">Exclusive - bu onlayn do'kon bo'lib, unda turli xil <br>
+                        mahsulotlarni sotib olish va saralash imkoniyati mavjud.</p>
+                    <p><a href="https://exclusive-lzd2.vercel.app" target="_blank"
+                            data-i18n="projectExclusiveLink">Exclusive saytiga o'tish</a></p>
                 </div>
                 <div class="box1">
-                    <a href="https://uzum-market-thsv.vercel.app" target="_blank">&rarr; Uzum-Market &larr;</a>
-                    <p>Uzum-Market - bu onlayn bozor bo'lib, unda <br> turli xil mahsulotlarni topishingiz mumkin.</p>
+                    <div class="img4">
+                        <img src="./assets/image copy 9.png" alt="">
+                    </div>
+                    <h3>Uzum-Market</h3>
+                    <p data-i18n="projectUzumText">Uzum-Market - bu onlayn bozor bo'lib, unda <br> turli xil
+                        mahsulotlarni topishingiz mumkin.</p>
+                    <p><a href="https://uzum-market-thsv.vercel.app" target="_blank"
+                            data-i18n="projectUzumLink">Uzum-Market saytiga o'tish</a></p>
                 </div>
             </div>
         </div>
 
         <div class="sertifikatlar" id="sertifikatlar">
-            <h2>Sertifikatlarim</h2>
+            <h2 data-i18n="certificatesTitle">Sertifikatlarim</h2>
             <div class="cert-grid">
 
                 <div class="cert-card">
                     <div class="cert-icon" style="background-color: #dbeafe;">
                         <img src="./assets/image copy.png" alt="">
                     </div>
-                    <h3>HTML, CSS <br> dasturlash tili</h3>
-                    <p>Sertifikat yili: 15-04-2025</p>
-                    <button><a href="https://drive.google.com/uc?export=view&id=1tFvSmdF5ITbSGdRd9ng8G_QTupY4YnNS"
-                            target="_blank">Ko'rish</a></button>
+                    <h3 data-i18n="cert1Title">HTML, CSS <br> dasturlash tili</h3>
+                    <p data-i18n="cert1Date">Sertifikat yili: 15-04-2025</p>
+                    <button><a
+                            href="https://drive.usercontent.google.com/download?id=1tFvSmdF5ITbSGdRd9ng8G_QTupY4YnNS&export=view&authuser=0"
+                            target="_blank" data-i18n="viewButton">Ko'rish</a></button>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-icon" style="background-color: #fef9c3;">
                         <img src="./assets/image copy 3.png" alt="">
                     </div>
-                    <h3>JavaScript <br> dasturlash tili</h3>
-                    <p>Sertifikat yili: 10-09-2025</p>
-                    <button><a href="https://drive.google.com/uc?export=view&id=1LdlDyma70N81bS6iXmd1l5RjSH-Pvn3_"
-                            target="_blank">Ko'rish</a></button>
+                    <h3 data-i18n="cert2Title">JavaScript <br> dasturlash tili</h3>
+                    <p data-i18n="cert2Date">Sertifikat yili: 10-09-2025</p>
+                    <button><a
+                            href="https://drive.usercontent.google.com/download?id=1LdlDyma70N81bS6iXmd1l5RjSH-Pvn3_&export=view&authuser=0"
+                            target="_blank" data-i18n="viewButton">Ko'rish</a></button>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-icon" style="background-color: #dcfce7;">
                         <img src="./assets/image copy 2.png" alt="">
                     </div>
-                    <h3>Frontend: HTML, CSS, JS, React</h3>
-                    <p>Sertifikat yili: 05-12-2025</p>
+                    <h3 data-i18n="cert3Title">Frontend: HTML, CSS, JS, React</h3>
+                    <p data-i18n="cert3Date">Sertifikat yili: 05-12-2025</p>
                     <button><a
                             href="https://drive.usercontent.google.com/download?id=1elk_zx-vqGwK7RUA8J-9-mrg7Ots__GK&export=view&authuser=0"
-                            target="_blank">Ko'rish</a></button>
+                            target="_blank" data-i18n="viewButton">Ko'rish</a></button>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-icon" style="background-color: #ede9fe;">
                         <img src="./assets/image.png" alt="">
                     </div>
-                    <h3>Full-Stack: HTML, CSS, JS, React, Node.js</h3>
-                    <p>Sertifikat yili: 01-04-2026</p>
-                    <button><a href="https://drive.google.com/uc?export=view&id=1EAus8PaYIk8LYvwtwN56W1iaC3m8I1rg"
-                            target="_blank">Ko'rish</a></button>
+                    <h3 data-i18n="cert4Title">Full-Stack: HTML, CSS, JS, React, Node.js</h3>
+                    <p data-i18n="cert4Date">Sertifikat yili: 01-04-2026</p>
+                    <button><a
+                            href="https://drive.usercontent.google.com/download?id=1EAus8PaYIk8LYvwtwN56W1iaC3m8I1rg&export=view&authuser=0"
+                            target="_blank" data-i18n="viewButton">Ko'rish</a></button>
                 </div>
 
             </div>
         </div>
 
         <div class="boglanish" id="boglanish">
-            <h2>Bog'lanish</h2>
-            <form>
-                <input type="text" placeholder="Ismingiz">
-                <input type="email" placeholder="Emailingiz">
-                <input type="number" placeholder="Telefon raqamingiz">
-                <textarea placeholder="Xabaringiz"></textarea>
-                <button type="submit">Yuborish</button>
+            <h2 data-i18n="contactTitle">Bog'lanish</h2>
+            <form id="form">
+                <input id="name" type="text" placeholder="Ismingiz" data-placeholder="namePlaceholder">
+                <input id="email" type="email" placeholder="Emailingiz" data-placeholder="emailPlaceholder">
+                <input id="number" type="number" placeholder="Telefon raqamingiz" data-placeholder="phonePlaceholder">
+                <textarea id="msg" placeholder="Xabaringiz" data-placeholder="messagePlaceholder"></textarea>
+                <button type="submit" data-i18n="sendButton">Yuborish</button>
             </form>
         </div>
     </main>
 
     <footer>
-        <h2>Abdurauf Dev</h2>
-        <p>Zamonaviy web saytlar yaratuvchi Full Stack Developer</p>
+        <div class="logo">
+            <div class="img5">
+                <img src="./assets/image copy 5.png" alt="">
+            </div>
+        </div>
+        <p data-i18n="footerText">Zamonaviy web saytlar yaratuvchi Full Stack Developer</p>
         <nav>
-            <a href="#bosh-sahifa">Men haqimda</a>
-            <a href="#konikmalar">Ko'nikmalar</a>
-            <a href="#loyihalar">Loyihalar</a>
-            <a href="#sertifikatlar">Sertifikatlar</a>
-            <a href="#boglanish">Bog'lanish</a>
+            <a href="#bosh-sahifa" data-i18n="navAbout">Men haqimda</a>
+            <a href="#konikmalar" data-i18n="navSkills">Ko'nikmalar</a>
+            <a href="#loyihalar" data-i18n="navProjects">Loyihalar</a>
+            <a href="#sertifikatlar" data-i18n="navCertificates">Sertifikatlar</a>
+            <a href="#boglanish" data-i18n="navContact">Bog'lanish</a>
         </nav>
         <div class="icon">
             <a href="https://www.instagram.com/abdurauf__500_/?next=https%3A%2F%2Fwww.instagram.com%2F"
@@ -147,9 +199,8 @@
             <a href="https://github.com/Abdurauf001" target="_blank"><img
                     src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_640.png" alt=""></a>
         </div>
-        <p>© 2026 Abdurauf. Barcha huquqlar himoyalangan.</p>
+        <p data-i18n="footerCopyright">© 2026 Abdurauf. Barcha huquqlar himoyalangan.</p>
     </footer>
-
 
     <script src="./app.js"></script>
 
