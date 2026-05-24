@@ -1,47 +1,4 @@
 const translations = {
-    uz: {
-        pageTitle: "Portfolio",
-        navAbout: "Men haqimda",
-        navSkills: "Ko'nikmalar",
-        navProjects: "Loyihalar",
-        navCertificates: "Sertifikatlar",
-        navContact: "Bog'lanish",
-        heroTitle: "Men <span>Kutpiddinov Abdurauf</span> <br> <span class=\"highlight\">Full-Stack</span> Dasturchi",
-        heroText: "Men Full Stack Dasturchi sifatida zamonaviy web saytlar yarataman. Frontend va Backend texnologiyalarida ishlayman.",
-        heroButton: "Menga yozing",
-        skillsTitle: "Ko'nikmalarim",
-        projectsTitle: "Loyihalarim",
-        projectExclusiveText: "Exclusive - bu onlayn do'kon bo'lib, unda turli xil <br> mahsulotlarni sotib olish va saralash imkoniyati mavjud.",
-        projectExclusiveLink: "Exclusive saytiga o'tish",
-        projectUzumText: "Uzum-Market - bu onlayn bozor bo'lib, unda <br> turli xil mahsulotlarni topishingiz mumkin.",
-        projectUzumLink: "Uzum-Market saytiga o'tish",
-        certificatesTitle: "Sertifikatlarim",
-        cert1Title: "HTML, CSS <br> dasturlash tili",
-        cert1Date: "Sertifikat yili: 15-04-2025",
-        cert2Title: "JavaScript <br> dasturlash tili",
-        cert2Date: "Sertifikat yili: 10-09-2025",
-        cert3Title: "Frontend: HTML, CSS, JS, React",
-        cert3Date: "Sertifikat yili: 05-12-2025",
-        cert4Title: "Full-Stack: HTML, CSS, JS, React, Node.js",
-        cert4Date: "Sertifikat yili: 01-04-2026",
-        viewButton: "Ko'rish",
-        contactTitle: "Bog'lanish",
-        namePlaceholder: "Ismingiz",
-        emailPlaceholder: "Emailingiz",
-        phonePlaceholder: "Telefon raqamingiz",
-        messagePlaceholder: "Xabaringiz",
-        sendButton: "Yuborish",
-        footerText: "Zamonaviy web saytlar yaratuvchi Full Stack Developer",
-        footerCopyright: "© 2026 Abdurauf. Barcha huquqlar himoyalangan.",
-        skillLevel: "Daraja",
-        skillDescriptions: {
-            html: "Semantik va toza HTML strukturalarini ishonchli tuzaman.",
-            css: "Moslashuvchan, chiroyli va responsive interfeyslar yarataman.",
-            js: "Interaktiv funksiyalarni va dinamik sahifa ishlashini yozaman.",
-            react: "Komponentlarga bo'lingan zamonaviy frontend ilovalar quraman.",
-            node: "Server tomoni logikasi va API lar bilan ishlayman."
-        }
-    },
     en: {
         pageTitle: "Portfolio",
         navAbout: "About Me",
@@ -83,6 +40,49 @@ const translations = {
             js: "I write interactive features and dynamic page behavior.",
             react: "I build modern frontend apps with reusable components.",
             node: "I work with server-side logic and API development."
+        }
+    },
+    uz: {
+        pageTitle: "Portfolio",
+        navAbout: "Men haqimda",
+        navSkills: "Ko'nikmalar",
+        navProjects: "Loyihalar",
+        navCertificates: "Sertifikatlar",
+        navContact: "Bog'lanish",
+        heroTitle: "Men <span>Kutpiddinov Abdurauf</span> <br> <span class=\"highlight\">Full-Stack</span> Dasturchi",
+        heroText: "Men Full Stack Dasturchi sifatida zamonaviy web saytlar yarataman. Frontend va Backend texnologiyalarida ishlayman.",
+        heroButton: "Menga yozing",
+        skillsTitle: "Ko'nikmalarim",
+        projectsTitle: "Loyihalarim",
+        projectExclusiveText: "Exclusive - bu onlayn do'kon bo'lib, unda turli xil <br> mahsulotlarni sotib olish va saralash imkoniyati mavjud.",
+        projectExclusiveLink: "Exclusive saytiga o'tish",
+        projectUzumText: "Uzum-Market - bu onlayn bozor bo'lib, unda <br> turli xil mahsulotlarni topishingiz mumkin.",
+        projectUzumLink: "Uzum-Market saytiga o'tish",
+        certificatesTitle: "Sertifikatlarim",
+        cert1Title: "HTML, CSS <br> dasturlash tili",
+        cert1Date: "Sertifikat yili: 15-04-2025",
+        cert2Title: "JavaScript <br> dasturlash tili",
+        cert2Date: "Sertifikat yili: 10-09-2025",
+        cert3Title: "Frontend: HTML, CSS, JS, React",
+        cert3Date: "Sertifikat yili: 05-12-2025",
+        cert4Title: "Full-Stack: HTML, CSS, JS, React, Node.js",
+        cert4Date: "Sertifikat yili: 01-04-2026",
+        viewButton: "Ko'rish",
+        contactTitle: "Bog'lanish",
+        namePlaceholder: "Ismingiz",
+        emailPlaceholder: "Emailingiz",
+        phonePlaceholder: "Telefon raqamingiz",
+        messagePlaceholder: "Xabaringiz",
+        sendButton: "Yuborish",
+        footerText: "Zamonaviy web saytlar yaratuvchi Full Stack Developer",
+        footerCopyright: "© 2026 Abdurauf. Barcha huquqlar himoyalangan.",
+        skillLevel: "Daraja",
+        skillDescriptions: {
+            html: "Semantik va toza HTML strukturalarini ishonchli tuzaman.",
+            css: "Moslashuvchan, chiroyli va responsive interfeyslar yarataman.",
+            js: "Interaktiv funksiyalarni va dinamik sahifa ishlashini yozaman.",
+            react: "Komponentlarga bo'lingan zamonaviy frontend ilovalar quraman.",
+            node: "Server tomoni logikasi va API lar bilan ishlayman."
         }
     },
     ru: {
@@ -130,13 +130,6 @@ const translations = {
     }
 };
 
-const skills = {
-    html: { name: "HTML", pct: 90 },
-    css: { name: "CSS", pct: 80 },
-    js: { name: "JavaScript", pct: 65 },
-    react: { name: "React", pct: 80 },
-    node: { name: "Node.js", pct: 75 }
-};
 
 let currentLanguage = localStorage.getItem("language") || "uz";
 let activeSkillKey = null;
