@@ -13,7 +13,7 @@ const translations = {
         projectsTitle: "My Projects",
         projectExclusiveText: "Exclusive is an online store where users can buy and sort different types of products.",
         projectExclusiveLink: "Visit the Exclusive website",
-        projectUzumText: "Uzum Market is an online marketplace where you can <br> find a wide range of products.",
+        projectUzumText: "Uzum Market is an online marketplace where you can find a wide range of products.",
         projectUzumLink: "Visit the Uzum Market website",
         certificatesTitle: "My Certificates",
         cert1Title: "HTML, CSS <br> programming language",
@@ -54,9 +54,9 @@ const translations = {
         heroButton: "Menga yozing",
         skillsTitle: "Ko'nikmalarim",
         projectsTitle: "Loyihalarim",
-        projectExclusiveText: "Exclusive - bu onlayn do'kon bo'lib, unda turli xil <br> mahsulotlarni sotib olish va saralash imkoniyati mavjud.",
+        projectExclusiveText: "Exclusive - bu onlayn do'kon bo'lib, unda turli xil mahsulotlarni sotib olish va saralash imkoniyati mavjud.",
         projectExclusiveLink: "Exclusive saytiga o'tish",
-        projectUzumText: "Uzum-Market - bu onlayn bozor bo'lib, unda <br> turli xil mahsulotlarni topishingiz mumkin.",
+        projectUzumText: "Uzum-Market - bu onlayn bozor bo'lib, unda turli xil mahsulotlarni topishingiz mumkin.",
         projectUzumLink: "Uzum-Market saytiga o'tish",
         certificatesTitle: "Sertifikatlarim",
         cert1Title: "HTML, CSS <br> dasturlash tili",
@@ -97,9 +97,9 @@ const translations = {
         heroButton: "Написать мне",
         skillsTitle: "Мои навыки",
         projectsTitle: "Мои проекты",
-        projectExclusiveText: "Exclusive - это интернет-магазин, где можно покупать и сортировать разные <br> товары.",
+        projectExclusiveText: "Exclusive - это интернет-магазин, где можно покупать и сортировать разные товары.",
         projectExclusiveLink: "Перейти на сайт Exclusive",
-        projectUzumText: "Uzum Market - это онлайн-маркетплейс, где можно <br> найти самые разные товары.",
+        projectUzumText: "Uzum Market - это онлайн-маркетплейс, где можно найти самые разные товары.",
         projectUzumLink: "Перейти на сайт Uzum Market",
         certificatesTitle: "Мои сертификаты",
         cert1Title: "HTML, CSS <br> язык программирования",
@@ -130,12 +130,25 @@ const translations = {
     }
 };
 
+const skills = {
+    html:  { name: "HTML",       pct: 95 },
+    css:   { name: "CSS",        pct: 90 },
+    js:    { name: "JavaScript", pct: 80 },
+    react: { name: "React",      pct: 75 },
+    node:  { name: "Node.js",    pct: 65 }
+};
 
-let currentLanguage = localStorage.getItem("language") || "uz";
+/* ==============================================
+   TIL: localStorage dan emas, har safar "en" dan boshlanadi
+   Agar foydalanuvchi o'zgartirsa — localStorage ga saqlanadi
+   va keyingi tashrif uchun eslab qoladi (bu satr uni o'chiradi)
+   ============================================== */
+localStorage.removeItem("language"); // Har sahifa yuklanganda default "en"
+let currentLanguage = "en";
 let activeSkillKey = null;
 
 function applyTranslations(language) {
-    const dictionary = translations[language] || translations.uz;
+    const dictionary = translations[language] || translations.en;
 
     document.documentElement.lang = language;
     document.title = dictionary.pageTitle;
@@ -167,7 +180,7 @@ function applyTranslations(language) {
 function renderSkill(key) {
     const area = document.getElementById("progress-area");
     const skill = skills[key];
-    const dictionary = translations[currentLanguage] || translations.uz;
+    const dictionary = translations[currentLanguage] || translations.en;
 
     area.innerHTML =
         '<div class="progress-wrap">' +
@@ -182,76 +195,113 @@ function renderSkill(key) {
         '</div>';
 
     setTimeout(function () {
-        const fill = document.getElementById("fill");
-        if (fill) {
-            fill.style.width = skill.pct + "%";
-        }
+        var fill = document.getElementById("fill");
+        if (fill) fill.style.width = skill.pct + "%";
     }, 30);
 }
 
-function showSkill(key, button) {
-    const area = document.getElementById("progress-area");
+// /* Skill cardga bosish — box butun cardni bosiladigan qilamiz */
+// function showSkill(key, button) {
+//     const area = document.getElementById("progress-area");
 
-    if (button.classList.contains("active")) {
-        button.classList.remove("active");
-        activeSkillKey = null;
-        area.innerHTML = "";
-        return;
-    }
+//     /* Agar allaqachon aktiv bo'lsa — yopamiz */
+//     if (activeSkillKey === key) {
+//         document.querySelectorAll(".skill-btn").forEach(function (b) {
+//             b.classList.remove("active");
+//         });
+//         document.querySelectorAll(".skill-buttons .box").forEach(function (b) {
+//             b.style.borderColor = "";
+//         });
+//         activeSkillKey = null;
+//         area.innerHTML = "";
+//         return;
+//     }
 
-    document.querySelectorAll(".skill-btn").forEach(function (item) {
-        item.classList.remove("active");
-    });
+//     document.querySelectorAll(".skill-btn").forEach(function (b) {
+//         b.classList.remove("active");
+//     });
 
-    button.classList.add("active");
-    activeSkillKey = key;
-    renderSkill(key);
-}
+//     button.classList.add("active");
+//     activeSkillKey = key;
+//     renderSkill(key);
+// }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const languageSelect = document.getElementById("languageSelect");
-
+    /* Default til = "en" */
     applyTranslations(currentLanguage);
 
+    /* Til o'zgartirish */
+    var languageSelect = document.getElementById("languageSelect");
     if (languageSelect) {
         languageSelect.addEventListener("change", function (event) {
             currentLanguage = event.target.value;
-            localStorage.setItem("language", currentLanguage);
             applyTranslations(currentLanguage);
+        });
+    }
+
+    /* Hamburger menu */
+    var hamburger = document.getElementById("hamburger");
+    var nav = document.getElementById("main-nav");
+    if (hamburger && nav) {
+        hamburger.addEventListener("click", function () {
+            var open = nav.classList.toggle("open");
+            hamburger.classList.toggle("open", open);
+            hamburger.setAttribute("aria-expanded", open);
+        });
+        nav.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                nav.classList.remove("open");
+                hamburger.classList.remove("open");
+                hamburger.setAttribute("aria-expanded", "false");
+            });
+        });
+    }
+
+    /* Scroll — header shadow */
+    window.addEventListener("scroll", function () {
+        document.getElementById("site-header").classList.toggle("scrolled", window.scrollY > 10);
+    });
+
+    /* Skill cardlarni box-ga bosish imkonini beramiz */
+    document.querySelectorAll(".skill-buttons .box").forEach(function (box) {
+        box.style.cursor = "pointer";
+        box.addEventListener("click", function () {
+            var btn = box.querySelector(".skill-btn");
+            if (btn) {
+                var key = btn.getAttribute("onclick").match(/'(\w+)'/)[1];
+                showSkill(key, btn);
+                /* Active box border */
+                document.querySelectorAll(".skill-buttons .box").forEach(function (b) {
+                    b.style.borderColor = "";
+                });
+                if (activeSkillKey) box.style.borderColor = "var(--blue)";
+            }
+        });
+    });
+
+    /* Form submit */
+    var form = document.getElementById("form");
+    if (form) {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            var name  = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("number").value;
+            var msg   = document.getElementById("msg").value;
+
+            var token   = "8036920676:AAHkQiIfOr7Bc_Y_lq7Y09OohKhEJ54Mi2g";
+            var chat_id = "YOUR_CHAT_ID";
+            var text = "📩 Yangi xabar:\n👤 Ism: " + name + "\n📧 Email: " + email + "\n📱 Telefon: " + phone + "\n💬 Xabar: " + msg;
+
+            fetch("https://api.telegram.org/bot" + token + "/sendMessage", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ chat_id: chat_id, text: text })
+            });
+
+            alert("Yuborildi 🚀");
         });
     }
 });
 
 
-
-
-
-document.getElementById("form").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let phone = document.getElementById("number").value;
-    let msg = document.getElementById("msg").value;
-
-    let token = "8036920676:AAHkQiIfOr7Bc_Y_lq7Y09OohKhEJ54Mi2g";
-    let chat_id = "YOUR_CHAT_ID";
-
-    let text =
-        `📩 Yangi xabar:
-        👤 Ism: ${name}
-        📧 Email: ${email}
-        📱 Telefon: ${phone}
-        💬 Xabar: ${msg}`;
-
-    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            chat_id: chat_id,
-            text: text
-        })
-    });
-
-    alert("Yuborildi 🚀");
-});
