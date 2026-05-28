@@ -112,7 +112,7 @@
                 <div class="box1">
                     <div class="img4">
                         <img src="./assets/image copy 7.png" alt="Exclusive">
-                    </div>`
+                    </div>
                     <h3>Exclusive</h3>
                     <p data-i18n="projectExclusiveText">Exclusive - bu onlayn do'kon bo'lib, unda turli xil
                         mahsulotlarni sotib olish va saralash imkoniyati mavjud.</p>
@@ -181,11 +181,12 @@
         <div class="boglanish" id="boglanish">
             <h2 data-i18n="contactTitle">Bog'lanish</h2>
             <form id="form">
-                <input id="name" type="text" placeholder="Ismingiz" data-placeholder="namePlaceholder">
-                <input id="email" type="email" placeholder="Emailingiz" data-placeholder="emailPlaceholder">
-                <input id="number" type="number" placeholder="Telefon raqamingiz" data-placeholder="phonePlaceholder">
-                <textarea id="msg" placeholder="Xabaringiz" data-placeholder="messagePlaceholder"></textarea>
+                <input id="name" type="text" placeholder="Ismingiz" data-placeholder="namePlaceholder" required>
+                <input id="email" type="email" placeholder="Emailingiz" data-placeholder="emailPlaceholder" required>
+                <input id="number" type="tel" placeholder="Telefon raqamingiz" data-placeholder="phonePlaceholder" required>
+                <textarea id="msg" placeholder="Xabaringiz" data-placeholder="messagePlaceholder" required></textarea>
                 <button type="submit" data-i18n="sendButton">Yuborish</button>
+                <p class="form-status" id="form-status" aria-live="polite"></p>
             </form>
         </div>
     </main>
@@ -218,35 +219,6 @@
     </footer>
 
     <script src="./app.js"></script>
-    <script>
-        /* Hamburger menu */
-
-        hamburger.addEventListener('click', () => {
-            const open = nav.classList.toggle('open');
-            hamburger.classList.toggle('open', open);
-            hamburger.setAttribute('aria-expanded', open);
-        });
-        /* Close nav on link click (mobile) */
-        nav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('open');
-                hamburger.classList.remove('open');
-                hamburger.setAttribute('aria-expanded', 'false');
-            });
-        });
-        /* Scrolled header shadow */
-        window.addEventListener('scroll', () => {
-            document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 10);
-        });
-
-        let hamburger = document.querySelector(".hamburger");
-        let nav = document.querySelector("nav");
-
-        hamburger.addEventListener("click", function () {
-            hamburger.classList.toggle("open");
-            nav.classList.toggle("open");
-        });
-    </script>
 </body>
 
 </html>

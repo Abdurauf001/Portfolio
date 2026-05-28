@@ -130,14 +130,6 @@ const translations = {
     }
 };
 
-const skills = {
-    html:  { name: "HTML",       pct: 95 },
-    css:   { name: "CSS",        pct: 90 },
-    js:    { name: "JavaScript", pct: 80 },
-    react: { name: "React",      pct: 75 },
-    node:  { name: "Node.js",    pct: 65 }
-};
-
 /* ==============================================
    TIL: localStorage dan emas, har safar "en" dan boshlanadi
    Agar foydalanuvchi o'zgartirsa — localStorage ga saqlanadi
@@ -282,26 +274,67 @@ document.addEventListener("DOMContentLoaded", function () {
     /* Form submit */
     var form = document.getElementById("form");
     if (form) {
-        form.addEventListener("submit", function (e) {
+        form.addEventListener("submit", async function (e) {
             e.preventDefault();
-            var name  = document.getElementById("name").value;
-            var email = document.getElementById("email").value;
-            var phone = document.getElementById("number").value;
-            var msg   = document.getElementById("msg").value;
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var phone = document.getElementById("number").value.trim();
+            var msg = document.getElementById("msg").value.trim();
+            var button = form.querySelector('button[type="submit"]');
+            var status = document.getElementById("form-status");
 
-            var token   = "8036920676:AAHkQiIfOr7Bc_Y_lq7Y09OohKhEJ54Mi2g";
-            var chat_id = "YOUR_CHAT_ID";
-            var text = "📩 Yangi xabar:\n👤 Ism: " + name + "\n📧 Email: " + email + "\n📱 Telefon: " + phone + "\n💬 Xabar: " + msg;
+            var token = "8036920676:AAHkQiIfOr7Bc_Y_lq7Y09OohKhEJ54Mi2g";
+            var chatId = "6148285981";
+            var text =
+                "Yangi xabar!\n\n" +
+                "Portfolio_2\n" +
+                "Ism: " + name + "\n" +
+                "Email: " + email + "\n" +
+                "Telefon: " + phone + "\n" +
+                "Xabar: " + msg;
 
-            fetch("https://api.telegram.org/bot" + token + "/sendMessage", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ chat_id: chat_id, text: text })
-            });
+            if (!name || !email || !phone || !msg) {
+                status.textContent = "Iltimos, barcha maydonlarni to'ldiring.";
+                status.className = "form-status error";
+                return;
+            }
 
-            alert("Yuborildi 🚀");
+            if (chatId === "YOUR_CHAT_ID") {
+                status.textContent = "Telegram chat_id kiritilmagan.";
+                status.className = "form-status error";
+                return;
+            }
+
+            button.disabled = true;
+            button.textContent = "Yuborilmoqda...";
+            status.textContent = "";
+            status.className = "form-status";
+
+            try {
+                var response = await fetch("https://api.telegram.org/bot" + token + "/sendMessage", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: text
+                    })
+                });
+                var result = await response.json();
+
+                if (!response.ok || !result.ok) {
+                    throw new Error(result.description || "Adminga yuborib bo'lmadi.");
+                }
+
+                form.reset();
+                status.textContent = "Xabar adminga yuborildi.";
+                status.className = "form-status success";
+            } catch (error) {
+                status.textContent = "Xabar yuborilmadi. Keyinroq qayta urinib ko'ring.";
+                status.className = "form-status error";
+            } finally {
+                button.disabled = false;
+                button.textContent = (translations[currentLanguage] || translations.en).sendButton;
+            }
         });
     }
 });
-
-
